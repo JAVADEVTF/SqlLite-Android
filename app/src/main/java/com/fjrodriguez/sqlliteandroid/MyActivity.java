@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -14,13 +15,17 @@ import android.widget.Toast;
 public class MyActivity extends Activity {
 
     SQLiteDatabase DBW;
-    TextView info;
+    EditText editTextNombre, editTextCorreo, editTextCP, editTextFechaNacimiento;
+    Cursor C;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my);
-        info = (TextView) findViewById(R.id.textViewInfo);
+        editTextNombre = (EditText) findViewById(R.id.editTextNombre);
+        editTextCorreo = (EditText) findViewById(R.id.editTextCorreo);
+        editTextCP = (EditText) findViewById(R.id.editTextCP);
+        editTextFechaNacimiento = (EditText) findViewById(R.id.editTextFechaNacimiento);
     }
 
 
@@ -59,20 +64,39 @@ public class MyActivity extends Activity {
             Toast.makeText(this, "No conectado a la B.D.", Toast.LENGTH_LONG);
     }
 
-    public void recuperar(View view) {
+    public void cargarDatos() {
         if (DBW != null) {
-            String SQLSELECCION = "SELECT NOMBRE, CORREO FROM usuarios;";
+            String SQLSELECCION = "SELECT NOMBRE, CORREO, CODIGOPOSTAL, EDAD, FECHANAC " +
+                    "FROM usuarios;";
             String[] argumentos = null;
             Cursor C = DBW.rawQuery(SQLSELECCION, argumentos);
-            boolean continuar = C.moveToFirst();
-            while (continuar) {
-                info.append("Nombre: "+C.getString(0)+"\n");
-                info.append("Correo: "+C.getString(1)+"\n");
-                continuar = C.moveToNext();
-            }
-            info.append("Total hallados: "+String.valueOf(C.getCount())+"\n");
         }
 
+    }
+
+    private void mostrarDatos() {
+        editTextNombre.setText(C.getString(0));
+        editTextCorreo.setText(C.getString(1));
+        editTextCP.setText(C.getString(2));
+        editTextFechaNacimiento.setText(C.getString(3));
+    }
+
+    public void mostrarUsuario(View view) {
+        switch (view.getId()) {
+            case R.id.btn_principio:
+                C.moveToFirst();
+                break;
+            case R.id.btn_atras:
+                C.moveToPrevious();
+                break;
+            case R.id.btn_avanzar:
+                C.moveToNext();
+                break;
+            case R.id.btn_final:
+                C.moveToLast();
+                break;
+        }
+        mostrarDatos();
     }
 
     @Override
@@ -80,6 +104,11 @@ public class MyActivity extends Activity {
         super.onResume();
         database DB = new database(this, "Miagenda3.db", null, 1);
         DBW = DB.getWritableDatabase();
+        if (DBW != null) {
+            cargarDatos();
+            mostrarUsuario(findViewById(R.id.btn_principio));
+        }
+
     }
 
     @Override
