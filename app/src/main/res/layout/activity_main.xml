@@ -1,0 +1,149 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.fjrodriguez.sqlliteandroid.MainActivity">
+
+    <TextView
+        android:text="Nombre:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textViewNombre" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editTextNombre"
+        android:layout_below="@+id/textViewNombre"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Correo:"
+        android:id="@+id/textViewCorreo"
+        android:layout_below="@+id/editTextNombre"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editTextCorreo"
+        android:layout_below="@+id/textViewCorreo"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/editTextNombre"
+        android:layout_alignEnd="@+id/editTextNombre" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Código Postal:"
+        android:id="@+id/textViewCP"
+        android:layout_below="@+id/editTextCorreo"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editTextCP"
+        android:layout_below="@+id/textViewCP"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/editTextCorreo"
+        android:layout_alignEnd="@+id/editTextCorreo" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Edad:"
+        android:id="@+id/textViewEdad"
+        android:layout_below="@+id/editTextCP"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editTextEdad"
+        android:layout_below="@+id/textViewEdad"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/editTextCP"
+        android:layout_alignEnd="@+id/editTextCP" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fecha de Nacimiento:"
+        android:id="@+id/textViewFechaNacimiento"
+        android:layout_below="@+id/editTextEdad"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editTextFechaNac"
+        android:layout_below="@+id/textViewFechaNacimiento"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/editTextEdad"
+        android:layout_alignEnd="@+id/editTextEdad" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:id="@+id/btn_primero"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:onClick="pulsado_botones" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1"
+        android:id="@+id/btn_atras"
+        android:layout_alignTop="@+id/btn_primero"
+        android:layout_toRightOf="@+id/btn_primero"
+        android:onClick="pulsado_botones" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="insertar"
+        android:id="@+id/btn_insertar"
+        android:layout_alignBottom="@+id/btn_atras"
+        android:layout_toRightOf="@+id/btn_atras"
+        android:onClick="pulsado_botones" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2"
+        android:id="@+id/btn_avanzar"
+        android:layout_alignBottom="@+id/btn_insertar"
+        android:layout_toRightOf="@+id/btn_insertar"
+        android:onClick="pulsado_botones" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="3"
+        android:id="@+id/btn_final"
+        android:layout_alignBottom="@+id/btn_avanzar"
+        android:layout_toRightOf="@+id/btn_avanzar"
+        android:onClick="pulsado_botones" />
+
+</RelativeLayout>
